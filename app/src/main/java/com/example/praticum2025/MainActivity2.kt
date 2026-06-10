@@ -170,6 +170,10 @@ class MainActivity2 : AppCompatActivity() {
                     }
 
                     // Clear button resets the app data
+                    //"The Clear button resets the application to its initial
+                    // state by setting the index back to 0, clearing the displayed results,
+                    // resetting the current day, and removing any text entered in the input fields.
+                    // This allows the user to enter a new set of weather data from the beginning."
                     btnClear.setOnClickListener {
 
                         // Reset index so the user can start entering data again
@@ -184,8 +188,31 @@ class MainActivity2 : AppCompatActivity() {
                         edtMax.text.clear()
                         edtCondition.text.clear()
 
-                        Toast.makeText(this, "Data cleared", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,
+                            "Data cleared", Toast.LENGTH_SHORT).show()
                     }
+
+                    //SIMPLER WAY OF DOING IT
+                    //If the detailed screen only needs a big text message
+                    // you could build the whole report in MainActivity
+//                    var details = ""
+//
+//                    var i = 0
+//                    while (i < index) {
+//
+//                        details += "${days[i]} "
+//                        details += "Min: ${minTemps[i]} "
+//                        details += "Max: ${maxTemps[i]} "
+//                        details += "${conditions[i]}\n"
+//
+//                        i++
+//                    }
+                    //Send only one thing!!
+                    //intent.putExtra("details", details)
+                    //THEN RECEIVE IN THE DETAIL ACTIVITY
+                    //val details = intent.getStringExtra("details")
+                    //txtDetails.text = details
+
 
 
 
