@@ -1,6 +1,7 @@
 package com.example.praticum2025
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -152,6 +153,38 @@ class MainActivity2 : AppCompatActivity() {
 //Display the result
                         txtAverage.text =
                             "Average Temperature: %.2f°C".format(weeklyAverage)
+                    }
+                    // Details button opens the detailed view screen
+                    btnDetails.setOnClickListener {
+
+                        val intent = Intent(this, DetailActivity::class.java)
+
+                        // Send arrays and index to the detailed screen
+                        intent.putExtra("days", days)
+                        intent.putExtra("minTemps", minTemps)
+                        intent.putExtra("maxTemps", maxTemps)
+                        intent.putExtra("conditions", conditions)
+                        intent.putExtra("index", index)
+
+                        startActivity(intent)
+                    }
+
+                    // Clear button resets the app data
+                    btnClear.setOnClickListener {
+
+                        // Reset index so the user can start entering data again
+                        index = 0
+
+                        // Clear output text
+                        txtAverage.text = ""
+                        txtDay.text = "Enter weather for: ${days[index]}"
+
+                        // Clear input fields
+                        edtMin.text.clear()
+                        edtMax.text.clear()
+                        edtCondition.text.clear()
+
+                        Toast.makeText(this, "Data cleared", Toast.LENGTH_SHORT).show()
                     }
 
 
